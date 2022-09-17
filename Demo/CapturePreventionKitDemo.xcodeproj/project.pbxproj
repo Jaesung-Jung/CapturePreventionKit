@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B28840328D58CB900464F67 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B28840228D58CB900464F67 /* Then.swift */; };
 		4BD8BC5928D49EC900774114 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC5828D49EC900774114 /* AppDelegate.swift */; };
 		4BD8BC5D28D49EC900774114 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC5C28D49EC900774114 /* ViewController.swift */; };
 		4BD8BC6228D49EC900774114 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BD8BC6128D49EC900774114 /* Assets.xcassets */; };
@@ -17,10 +18,10 @@
 		4BD8BC7E28D4A0F900774114 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC7828D4A0F900774114 /* ImageView.swift */; };
 		4BD8BC7F28D4A0F900774114 /* SecureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC7928D4A0F900774114 /* SecureImageView.swift */; };
 		4BD8BC8028D4A0F900774114 /* SecureLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC7A28D4A0F900774114 /* SecureLabel.swift */; };
-		4BD8BC8228D4B27F00774114 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC8128D4B27F00774114 /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B28840228D58CB900464F67 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		4BD8BC5528D49EC900774114 /* CapturePreventionKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapturePreventionKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BD8BC5828D49EC900774114 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BD8BC5C28D49EC900774114 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,7 +34,6 @@
 		4BD8BC7828D4A0F900774114 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		4BD8BC7928D4A0F900774114 /* SecureImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureImageView.swift; sourceTree = "<group>"; };
 		4BD8BC7A28D4A0F900774114 /* SecureLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureLabel.swift; sourceTree = "<group>"; };
-		4BD8BC8128D4B27F00774114 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				4BD8BC7328D4A0F900774114 /* CapturePreventionKit */,
-				4BD8BC8128D4B27F00774114 /* Extension.swift */,
+				4B28840228D58CB900464F67 /* Then.swift */,
 				4BD8BC5C28D49EC900774114 /* ViewController.swift */,
 				4BD8BC5828D49EC900774114 /* AppDelegate.swift */,
 				4BD8BC6128D49EC900774114 /* Assets.xcassets */,
@@ -169,7 +169,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BD8BC8228D4B27F00774114 /* Extension.swift in Sources */,
 				4BD8BC5D28D49EC900774114 /* ViewController.swift in Sources */,
 				4BD8BC7C28D4A0F900774114 /* CMSampleBufferExtension.swift in Sources */,
 				4BD8BC5928D49EC900774114 /* AppDelegate.swift in Sources */,
@@ -177,6 +176,7 @@
 				4BD8BC7F28D4A0F900774114 /* SecureImageView.swift in Sources */,
 				4BD8BC8028D4A0F900774114 /* SecureLabel.swift in Sources */,
 				4BD8BC7E28D4A0F900774114 /* ImageView.swift in Sources */,
+				4B28840328D58CB900464F67 /* Then.swift in Sources */,
 				4BD8BC7D28D4A0F900774114 /* CVPixelBufferExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

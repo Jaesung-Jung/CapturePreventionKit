@@ -27,59 +27,77 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
-    view.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     navigationItem.title = "Capture Prevention Kit"
 
-    let headerLabel = SecureLabel()
-    headerLabel.text = "Prevent screen capture"
-    headerLabel.font = .preferredFont(forTextStyle: .title1)
-    headerLabel.adjustsFontForContentSizeCategory = true
+    let scrollView = UIScrollView().then {
+      $0.alwaysBounceVertical = true
+      $0.translatesAutoresizingMaskIntoConstraints = false
+    }
 
-    let descriptionLabel = SecureLabel()
-    descriptionLabel.text = "Protect your security contents from screen capture on device. Labels and images provide protection from screen capture, screen recording and air play."
-    descriptionLabel.font = .preferredFont(forTextStyle: .body)
-    descriptionLabel.numberOfLines = 0
-    descriptionLabel.adjustsFontForContentSizeCategory = true
-
-    let labelStackView = UIStackView(axis: .vertical, spacing: 8, arrangedSubviews: [
-      headerLabel,
-      descriptionLabel
-    ])
-    labelStackView.translatesAutoresizingMaskIntoConstraints = false
-    view.addSubview(labelStackView)
+    view.addSubview(scrollView)
     NSLayoutConstraint.activate([
-      labelStackView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-      labelStackView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-      labelStackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+      scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+      scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      scrollView.widthAnchor.constraint(equalTo: view.widthAnchor)
     ])
 
-    let qrImageView = SecureImageView(image: UIImage(named: "qrcode"))
-    qrImageView.contentMode = .scaleAspectFit
-    qrImageView.translatesAutoresizingMaskIntoConstraints = false
-
-    let qrLabel = UILabel()
-    qrLabel.text = "Scan QR Code"
-    qrLabel.textAlignment = .center
-    qrLabel.font = .boldSystemFont(ofSize: 20)
-    qrLabel.backgroundColor = .systemGroupedBackground
-    qrLabel.translatesAutoresizingMaskIntoConstraints = false
-    qrLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
-    qrLabel.layer.cornerRadius = 16
-    qrLabel.layer.masksToBounds = true
-
-
-    view.addSubview(qrImageView)
-    view.addSubview(qrLabel)
-
+    let headerLabel = SecureLabel().then {
+      $0.text = "Prevent screen capture"
+      $0.font = .preferredFont(forTextStyle: .title1)
+      $0.adjustsFontForContentSizeCategory = true
+      $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    scrollView.addSubview(headerLabel)
     NSLayoutConstraint.activate([
-      qrImageView.topAnchor.constraint(equalTo: labelStackView.bottomAnchor, constant: 40),
-      qrImageView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+      headerLabel.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 20),
+      headerLabel.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 20),
+      headerLabel.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -20),
+    ])
+
+    let descriptionLabel = SecureLabel().then {
+      $0.font = .preferredFont(forTextStyle: .body)
+      $0.numberOfLines = 0
+      $0.adjustsFontForContentSizeCategory = true
+      $0.translatesAutoresizingMaskIntoConstraints = false
+      $0.text = "Protect your security contents from screen capture on device. Labels and images provide protection from screen capture, screen recording and air play."
+    }
+    scrollView.addSubview(descriptionLabel)
+    NSLayoutConstraint.activate([
+      descriptionLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 8),
+      descriptionLabel.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 20),
+      descriptionLabel.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -20),
+    ])
+
+    let qrImageView = SecureImageView(image: UIImage(named: "qrcode")).then {
+      $0.contentMode = .scaleAspectFit
+      $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    scrollView.addSubview(qrImageView)
+    NSLayoutConstraint.activate([
+      qrImageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 40),
+      qrImageView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
       qrImageView.widthAnchor.constraint(equalToConstant: 200),
-      qrImageView.heightAnchor.constraint(equalToConstant: 200),
+      qrImageView.heightAnchor.constraint(equalToConstant: 200)
+    ])
 
+    let qrLabel = UILabel().then {
+      $0.text = "Scan QR Code"
+      $0.textAlignment = .center
+      $0.font = .boldSystemFont(ofSize: 20)
+      $0.backgroundColor = .systemGroupedBackground
+      $0.layer.cornerRadius = 16
+      $0.layer.masksToBounds = true
+      $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    scrollView.addSubview(qrLabel)
+    NSLayoutConstraint.activate([
       qrLabel.topAnchor.constraint(equalTo: qrImageView.bottomAnchor, constant: 16),
-      qrLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-      qrLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
+      qrLabel.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 20),
+      qrLabel.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -20),
+      qrLabel.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -20),
+      qrLabel.heightAnchor.constraint(equalToConstant: 60)
     ])
   }
 }
