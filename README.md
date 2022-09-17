@@ -4,8 +4,6 @@ This package provides `Label` and `ImageView` for screen capture prevention. Usa
 
 It can be applied by changing `UILabel` to `SecureLabel` or `UIImageView` to `SecureImageView` without any special setting.
 
-Since the process of converting to a sample buffer is required to output images or text, performance may be affected. It's recommended to apply only to important content.
-
 ## Requirement
 
 iOS 13.0+
@@ -20,7 +18,7 @@ Using Swift Package Manager
 
 ```
 dependencies: [
-  .package(url: "https://github.com/Jaesung-Jung/CapturePreventionKit.git", .upToNextMajor(from: "1.0.0"))
+  .package(url: "https://github.com/Jaesung-Jung/CapturePreventionKit.git", .upToNextMajor(from: "1.1.0"))
 ]
 ```
 

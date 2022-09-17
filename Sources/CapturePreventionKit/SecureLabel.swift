@@ -24,21 +24,11 @@
 #if canImport(UIKit)
 
 import UIKit
-import AVFoundation
 
 @available(iOS 13.0, tvOS 13.0, *)
 @MainActor open class SecureLabel: UIView, UIContentSizeCategoryAdjusting {
-  let queue = DispatchQueue(label: "secure-image-view")
-
+  let secureTextField = UITextField()
   let label: Label
-
-  let displayLayer: AVSampleBufferDisplayLayer = {
-    let layer = AVSampleBufferDisplayLayer()
-    layer.videoGravity = .resize
-    layer.preventsCapture = true
-    layer.actions = ["hidden": NSNull()]
-    return layer
-  }()
 
   open var text: String? {
     get { label.text }
@@ -130,7 +120,9 @@ import AVFoundation
     set { label.showsExpansionTextWhenTruncated = newValue }
   }
 
-  open override var intrinsicContentSize: CGSize { label.intrinsicContentSize }
+  open override var intrinsicContentSize: CGSize {
+    return label.systemLayoutSizeFitting(bounds.size, withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
+  }
 
   open override var alignmentRectInsets: UIEdgeInsets { label.alignmentRectInsets }
 
@@ -146,7 +138,7 @@ import AVFoundation
   public override init(frame: CGRect) {
     self.label = Label(frame: frame)
     super.init(frame: frame)
-    _setup()
+    setup()
   }
 
   public required init?(coder: NSCoder) {
@@ -155,15 +147,7 @@ import AVFoundation
     }
     self.label = label
     super.init(coder: coder)
-    _setup()
-  }
-
-  open override func layoutSubviews() {
-    super.layoutSubviews()
-    CATransaction.begin()
-    CATransaction.setDisableActions(true)
-    displayLayer.frame = bounds
-    CATransaction.commit()
+    setup()
   }
 
   open override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -200,64 +184,39 @@ import AVFoundation
   open override func frame(forAlignmentRect alignmentRect: CGRect) -> CGRect {
     return label.frame(forAlignmentRect: alignmentRect)
   }
+
+  open override func layoutSubviews() {
+    super.layoutSubviews()
+    label.frame = bounds
+    invalidateIntrinsicContentSize()
+  }
 }
 
 extension SecureLabel {
-  private func _setup() {
+  func setup() {
     isUserInteractionEnabled = false
-    layer.addSublayer(displayLayer)
 
-    addSubview(label)
-    label.didFinisheDrawText = { [weak self] in
-      DispatchQueue.main.async {
-        self?._updateDisplay()
-      }
+    secureTextField.isSecureTextEntry = true
+    addSubview(secureTextField)
+    layer.addSublayer(secureTextField.layer)
+
+    secureTextField.layer.sublayers?.first?.addSublayer(label.layer)
+
+    label.invalidate = { [weak self] in
+      self?.invalidateIntrinsicContentSize()
     }
-
-    label.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      label.topAnchor.constraint(equalTo: topAnchor),
-      label.leadingAnchor.constraint(equalTo: leadingAnchor),
-      label.bottomAnchor.constraint(equalTo: bottomAnchor),
-      label.trailingAnchor.constraint(equalTo: trailingAnchor)
-    ])
   }
+}
 
-  private func _updateDisplay() {
-    displayLayer.isHidden = true
-    label.isHidden = false
+// MARK: - SecureLabel.Label
 
-    guard let text = text, !text.isEmpty else {
-      return
-    }
+extension SecureLabel {
+  class Label: UILabel {
+    var invalidate: (() -> Void)?
 
-    let renderer = UIGraphicsImageRenderer(bounds: label.bounds)
-    let image = renderer.image {
-      label.layer.render(in: $0.cgContext)
-    }
-
-    guard image.size != .zero else {
-      return
-    }
-    guard let cgImage = image.cgImage else {
-      return
-    }
-
-    queue.async {
-      guard let imageBuffer = CVPixelBuffer.pixelBuffer(image: cgImage) else {
-        return
-      }
-      guard let sampleBuffer = try? CMSampleBuffer.sampleBuffer(imageBuffer: imageBuffer) else {
-        return
-      }
-
-      self.displayLayer.flush()
-      self.displayLayer.enqueue(sampleBuffer)
-
-      DispatchQueue.main.async {
-        self.displayLayer.isHidden = false
-        self.label.isHidden = true
-      }
+    override func invalidateIntrinsicContentSize() {
+      super.invalidateIntrinsicContentSize()
+      invalidate?()
     }
   }
 }

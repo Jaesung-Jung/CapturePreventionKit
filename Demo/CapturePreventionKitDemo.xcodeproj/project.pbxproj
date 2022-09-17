@@ -12,10 +12,6 @@
 		4BD8BC5D28D49EC900774114 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC5C28D49EC900774114 /* ViewController.swift */; };
 		4BD8BC6228D49EC900774114 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BD8BC6128D49EC900774114 /* Assets.xcassets */; };
 		4BD8BC6528D49EC900774114 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BD8BC6328D49EC900774114 /* LaunchScreen.storyboard */; };
-		4BD8BC7B28D4A0F900774114 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC7528D4A0F900774114 /* Label.swift */; };
-		4BD8BC7C28D4A0F900774114 /* CMSampleBufferExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC7628D4A0F900774114 /* CMSampleBufferExtension.swift */; };
-		4BD8BC7D28D4A0F900774114 /* CVPixelBufferExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC7728D4A0F900774114 /* CVPixelBufferExtension.swift */; };
-		4BD8BC7E28D4A0F900774114 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC7828D4A0F900774114 /* ImageView.swift */; };
 		4BD8BC7F28D4A0F900774114 /* SecureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC7928D4A0F900774114 /* SecureImageView.swift */; };
 		4BD8BC8028D4A0F900774114 /* SecureLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8BC7A28D4A0F900774114 /* SecureLabel.swift */; };
 /* End PBXBuildFile section */
@@ -28,10 +24,6 @@
 		4BD8BC6128D49EC900774114 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BD8BC6428D49EC900774114 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4BD8BC6628D49EC900774114 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4BD8BC7528D4A0F900774114 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		4BD8BC7628D4A0F900774114 /* CMSampleBufferExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMSampleBufferExtension.swift; sourceTree = "<group>"; };
-		4BD8BC7728D4A0F900774114 /* CVPixelBufferExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVPixelBufferExtension.swift; sourceTree = "<group>"; };
-		4BD8BC7828D4A0F900774114 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		4BD8BC7928D4A0F900774114 /* SecureImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureImageView.swift; sourceTree = "<group>"; };
 		4BD8BC7A28D4A0F900774114 /* SecureLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,23 +72,11 @@
 		4BD8BC7328D4A0F900774114 /* CapturePreventionKit */ = {
 			isa = PBXGroup;
 			children = (
-				4BD8BC7428D4A0F900774114 /* Internal */,
 				4BD8BC7928D4A0F900774114 /* SecureImageView.swift */,
 				4BD8BC7A28D4A0F900774114 /* SecureLabel.swift */,
 			);
 			name = CapturePreventionKit;
 			path = ../../Sources/CapturePreventionKit;
-			sourceTree = "<group>";
-		};
-		4BD8BC7428D4A0F900774114 /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-				4BD8BC7528D4A0F900774114 /* Label.swift */,
-				4BD8BC7628D4A0F900774114 /* CMSampleBufferExtension.swift */,
-				4BD8BC7728D4A0F900774114 /* CVPixelBufferExtension.swift */,
-				4BD8BC7828D4A0F900774114 /* ImageView.swift */,
-			);
-			path = Internal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,14 +150,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BD8BC5D28D49EC900774114 /* ViewController.swift in Sources */,
-				4BD8BC7C28D4A0F900774114 /* CMSampleBufferExtension.swift in Sources */,
 				4BD8BC5928D49EC900774114 /* AppDelegate.swift in Sources */,
-				4BD8BC7B28D4A0F900774114 /* Label.swift in Sources */,
 				4BD8BC7F28D4A0F900774114 /* SecureImageView.swift in Sources */,
 				4BD8BC8028D4A0F900774114 /* SecureLabel.swift in Sources */,
-				4BD8BC7E28D4A0F900774114 /* ImageView.swift in Sources */,
 				4B28840328D58CB900464F67 /* Then.swift in Sources */,
-				4BD8BC7D28D4A0F900774114 /* CVPixelBufferExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

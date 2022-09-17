@@ -52,8 +52,8 @@ class ViewController: UIViewController {
     scrollView.addSubview(headerLabel)
     NSLayoutConstraint.activate([
       headerLabel.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 20),
-      headerLabel.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 20),
-      headerLabel.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -20),
+      headerLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+      headerLabel.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
     ])
 
     let descriptionLabel = SecureLabel().then {
@@ -66,8 +66,8 @@ class ViewController: UIViewController {
     scrollView.addSubview(descriptionLabel)
     NSLayoutConstraint.activate([
       descriptionLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 8),
-      descriptionLabel.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 20),
-      descriptionLabel.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -20),
+      descriptionLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+      descriptionLabel.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -20)
     ])
 
     let qrImageView = SecureImageView(image: UIImage(named: "qrcode")).then {
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
       qrImageView.heightAnchor.constraint(equalToConstant: 200)
     ])
 
-    let qrLabel = UILabel().then {
+    let qrLabel = SecureLabel().then {
       $0.text = "Scan QR Code"
       $0.textAlignment = .center
       $0.font = .boldSystemFont(ofSize: 20)
@@ -94,8 +94,8 @@ class ViewController: UIViewController {
     scrollView.addSubview(qrLabel)
     NSLayoutConstraint.activate([
       qrLabel.topAnchor.constraint(equalTo: qrImageView.bottomAnchor, constant: 16),
-      qrLabel.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 20),
-      qrLabel.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -20),
+      qrLabel.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+      qrLabel.trailingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
       qrLabel.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -20),
       qrLabel.heightAnchor.constraint(equalToConstant: 60)
     ])
