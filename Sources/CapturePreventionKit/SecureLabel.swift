@@ -106,7 +106,7 @@ import UIKit
   }
 
   @available(iOS 14.0, tvOS 14.0, *)
-  open var ligntBreakStrategy: NSParagraphStyle.LineBreakStrategy {
+  open var lineBreakStrategy: NSParagraphStyle.LineBreakStrategy {
     get { label.lineBreakStrategy }
     set { label.lineBreakStrategy = newValue }
   }
