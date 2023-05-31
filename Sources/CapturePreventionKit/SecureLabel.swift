@@ -105,6 +105,7 @@ import UIKit
     set { label.allowsDefaultTighteningForTruncation = newValue }
   }
 
+  @available(iOS 14.0, tvOS 14.0, *)
   open var ligntBreakStrategy: NSParagraphStyle.LineBreakStrategy {
     get { label.lineBreakStrategy }
     set { label.lineBreakStrategy = newValue }
