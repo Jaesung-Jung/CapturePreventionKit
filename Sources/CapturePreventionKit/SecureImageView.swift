@@ -34,26 +34,38 @@ import UIKit
   /// The image displayed in the image view.
   open var image: UIImage? {
     get { imageView.image }
-    set { imageView.image = newValue }
+    set {
+      imageView.image = newValue
+      invalidateIntrinsicContentSize()
+    }
   }
 
   /// The highlighted image displayed in the image view.
   open var highlightedImage: UIImage? {
     get { imageView.highlightedImage }
-    set { imageView.highlightedImage = newValue }
+    set {
+      imageView.highlightedImage = newValue
+      invalidateIntrinsicContentSize()
+    }
   }
 
   /// A Boolean value that determines whether the image is highlighted.
   open var isHighlighted: Bool {
     get { imageView.isHighlighted }
-    set { imageView.isHighlighted = newValue }
+    set {
+      imageView.isHighlighted = newValue
+      invalidateIntrinsicContentSize()
+    }
   }
 
   open override var intrinsicContentSize: CGSize { imageView.intrinsicContentSize }
 
   open override var contentMode: UIView.ContentMode {
     get { imageView.contentMode }
-    set { imageView.contentMode = newValue }
+    set {
+      imageView.contentMode = newValue
+      invalidateIntrinsicContentSize()
+    }
   }
 
   /// Returns an image view initialized with the specified image.
@@ -87,11 +99,11 @@ import UIKit
   }
 
   open override func sizeThatFits(_ size: CGSize) -> CGSize {
-    return imageView.sizeThatFits(size)
+    imageView.sizeThatFits(size)
   }
 
   open override func systemLayoutSizeFitting(_ targetSize: CGSize) -> CGSize {
-    return imageView.systemLayoutSizeFitting(targetSize)
+    imageView.systemLayoutSizeFitting(targetSize)
   }
 
   open override func systemLayoutSizeFitting(
@@ -99,18 +111,18 @@ import UIKit
     horizontalFittingPriority: UILayoutPriority,
     verticalFittingPriority: UILayoutPriority
   ) -> CGSize {
-    return imageView.systemLayoutSizeFitting(
+    imageView.systemLayoutSizeFitting(
       targetSize, withHorizontalFittingPriority: horizontalFittingPriority,
       verticalFittingPriority: verticalFittingPriority
     )
   }
 
   open override func alignmentRect(forFrame frame: CGRect) -> CGRect {
-    return imageView.alignmentRect(forFrame: frame)
+    imageView.alignmentRect(forFrame: frame)
   }
 
   open override func frame(forAlignmentRect alignmentRect: CGRect) -> CGRect {
-    return imageView.frame(forAlignmentRect: alignmentRect)
+    imageView.frame(forAlignmentRect: alignmentRect)
   }
 }
 

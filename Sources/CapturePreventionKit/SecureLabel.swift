@@ -121,9 +121,7 @@ import UIKit
     set { label.showsExpansionTextWhenTruncated = newValue }
   }
 
-  open override var intrinsicContentSize: CGSize {
-    return label.systemLayoutSizeFitting(bounds.size, withHorizontalFittingPriority: .required, verticalFittingPriority: .defaultLow)
-  }
+  open override var intrinsicContentSize: CGSize { label.intrinsicContentSize }
 
   open override var alignmentRectInsets: UIEdgeInsets { label.alignmentRectInsets }
 
@@ -152,11 +150,11 @@ import UIKit
   }
 
   open override func sizeThatFits(_ size: CGSize) -> CGSize {
-    return label.sizeThatFits(size)
+    label.sizeThatFits(size)
   }
 
   open func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
-    return label.textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines)
+    label.textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines)
   }
 
   open func drawText(in rect: CGRect) {
@@ -164,7 +162,7 @@ import UIKit
   }
 
   open override func systemLayoutSizeFitting(_ targetSize: CGSize) -> CGSize {
-    return label.systemLayoutSizeFitting(targetSize)
+    label.systemLayoutSizeFitting(targetSize)
   }
 
   open override func systemLayoutSizeFitting(
@@ -172,24 +170,24 @@ import UIKit
     horizontalFittingPriority: UILayoutPriority,
     verticalFittingPriority: UILayoutPriority
   ) -> CGSize {
-    return label.systemLayoutSizeFitting(
+    label.systemLayoutSizeFitting(
       targetSize, withHorizontalFittingPriority: horizontalFittingPriority,
       verticalFittingPriority: verticalFittingPriority
     )
   }
 
   open override func alignmentRect(forFrame frame: CGRect) -> CGRect {
-    return label.alignmentRect(forFrame: frame)
+    label.alignmentRect(forFrame: frame)
   }
 
   open override func frame(forAlignmentRect alignmentRect: CGRect) -> CGRect {
-    return label.frame(forAlignmentRect: alignmentRect)
+    label.frame(forAlignmentRect: alignmentRect)
   }
 
   open override func layoutSubviews() {
     super.layoutSubviews()
     label.frame = bounds
-    invalidateIntrinsicContentSize()
+    label.preferredMaxLayoutWidth = bounds.width
   }
 }
 
